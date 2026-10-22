@@ -1,0 +1,1134 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المسابقة الثامنة - مدرسة السلطان فيصل بن تركي للبنين</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold-primary: #d4af37;
+            --gold-glow: rgba(212, 175, 55, 0.4);
+            --oman-green: #064e3b;
+            --oman-red: #881337;
+        }
+        body { 
+            font-family: 'Baloo Bhaijaan 2', cursive; 
+            overflow-x: hidden; 
+            user-select: none; 
+            background: #0b1315; 
+            color: #f8fafc; 
+        }
+
+        .omani-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background-image: 
+                linear-gradient(to bottom, rgba(5, 18, 16, 0.85), rgba(12, 26, 23, 0.92)),
+                url('oman_bg.jpg'),
+                url('https://images.unsplash.com/photo-1596701062351-8c2c14d1fdd1?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .omani-pattern {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            opacity: 0.12;
+            background-image: 
+                radial-gradient(#d4af37 1.5px, transparent 1.5px), 
+                radial-gradient(#10b981 1px, transparent 1px);
+            background-size: 36px 36px;
+            background-position: 0 0, 18px 18px;
+        }
+
+        .circle-logo {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            border: 3px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4), inset 0 0 8px rgba(0, 0, 0, 0.5);
+            background: #ffffff;
+            transition: transform 0.3s ease;
+        }
+        .circle-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .luxury-card {
+            background: rgba(11, 28, 24, 0.86);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1.5px solid rgba(234, 179, 8, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.15);
+            border-radius: 24px;
+        }
+
+        .champ-card-bg {
+            position: relative;
+            background-color: rgba(11, 28, 24, 0.9);
+            background-image: 
+                linear-gradient(rgba(7, 22, 18, 0.85), rgba(7, 22, 18, 0.90)),
+                url('champ.png'),
+                url('champ.jpg'),
+                url('champ.jpeg'),
+                url('champ.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1.5px solid rgba(234, 179, 8, 0.45);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.85), 0 0 25px rgba(212, 175, 55, 0.18);
+            border-radius: 24px;
+        }
+
+        .challenge-container {
+            background-color: rgba(11, 28, 24, 0.9);
+            background-image: 
+                linear-gradient(rgba(7, 20, 17, 0.65), rgba(7, 20, 17, 0.75)),
+                url('background.png'),
+                url('background.jpg'),
+                url('background.jpeg'),
+                url('background.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1.5px solid rgba(234, 179, 8, 0.45);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.85), 0 0 30px rgba(212, 175, 55, 0.15);
+            border-radius: 24px;
+        }
+
+        .quiz-option-btn {
+            background: rgba(18, 43, 37, 0.88);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            color: #f1f5f9;
+            box-shadow: 0 4px 0 rgba(7, 20, 17, 0.9);
+            transition: all 0.15s ease;
+            min-height: 4.2rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.25rem;
+            cursor: pointer;
+            text-align: center;
+        }
+        .quiz-option-btn:hover:not(:disabled) {
+            background: rgba(27, 66, 57, 0.95);
+            border-color: #facc15;
+            transform: translateY(-2px);
+        }
+        .quiz-option-btn:active:not(:disabled) {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 rgba(7, 20, 17, 0.9);
+        }
+        .quiz-option-btn.correct {
+            background: #15803d !important;
+            border-color: #4ade80 !important;
+            box-shadow: 0 4px 0 #14532d !important;
+            color: #ffffff !important;
+        }
+        .quiz-option-btn.wrong {
+            background: #991b1b !important;
+            border-color: #f87171 !important;
+            box-shadow: 0 4px 0 #7f1d1d !important;
+            color: #ffffff !important;
+            opacity: 0.9;
+        }
+
+        .btn-action-gold {
+            background: linear-gradient(180deg, #facc15 0%, #ca8a04 100%);
+            color: #0f172a;
+            font-weight: 800;
+            border-radius: 9999px;
+            box-shadow: 0 6px 0 #854d0e, 0 12px 20px rgba(0,0,0,0.4);
+            transition: all 0.15s;
+        }
+        .btn-action-gold:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #854d0e, 0 4px 10px rgba(0,0,0,0.4);
+        }
+
+        .btn-action-blue {
+            background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
+            color: #ffffff;
+            font-weight: 800;
+            border-radius: 9999px;
+            box-shadow: 0 6px 0 #0369a1, 0 12px 20px rgba(0,0,0,0.4);
+            transition: all 0.15s;
+        }
+        .btn-action-blue:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #0369a1;
+        }
+
+        .wheel-svg {
+            transition: transform 4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border-radius: 50%;
+            box-shadow: 0 0 0 8px #d4af37, 0 0 35px rgba(212, 175, 55, 0.4);
+        }
+
+        .divider-line {
+            filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.9));
+        }
+
+        .question-visual-box {
+            background: rgba(4, 24, 20, 0.85);
+            border: 2px solid rgba(234, 179, 8, 0.4);
+            border-radius: 18px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.6);
+            max-width: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col justify-between p-3 md:p-6">
+
+    <!-- عنصر الصوت -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="back.mp3" type="audio/mpeg">
+        <source src="back.wav" type="audio/wav">
+        <source src="back.ogg" type="audio/ogg">
+        <source src="back.m4a" type="audio/mp4">
+        <source src="game_audio.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="omani-bg"></div>
+    <div class="omani-pattern"></div>
+
+    <!-- شريط الرأس -->
+    <header class="w-full max-w-7xl mx-auto luxury-card px-4 py-2.5 flex items-center justify-between border-b-2 border-yellow-500/50 shadow-lg z-30 mb-4">
+        <div class="flex items-center gap-3">
+            <img src="school.png" onerror="tryNextExt(this, ['school.jpg', 'school.jpeg', 'school.webp'])" alt="شعار المدرسة" class="circle-logo">
+            <div class="hidden sm:block text-right">
+                <h3 class="text-sm font-bold text-yellow-400">سلطنة عمان - وزارة التربية والتعليم</h3>
+                <h2 class="text-base md:text-lg font-black text-white">مدرسة السلطان فيصل بن تركي للبنين</h2>
+            </div>
+        </div>
+
+        <div class="text-center px-2">
+            <div class="inline-block bg-gradient-to-r from-emerald-700/80 to-red-800/80 border border-yellow-400/50 rounded-full px-5 py-1 text-xs md:text-sm font-black text-yellow-300 shadow-md">
+                🇴🇲 الرياضيات - الصف السادس
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <div class="hidden sm:block text-left">
+                <h3 class="text-sm font-bold text-yellow-400">المسابقة الثامنة</h3>
+                <h2 class="text-base md:text-lg font-black text-emerald-300">أسرة الرياضيات</h2>
+            </div>
+            <img src="math.png" onerror="tryNextExt(this, ['math.jpg', 'math.jpeg', 'math.webp'])" alt="شعار أسرة الرياضيات" class="circle-logo">
+        </div>
+    </header>
+
+    <!-- منطقة التحكم بالصوت وزر الرجوع الثابت -->
+    <div class="fixed bottom-4 left-4 z-50 flex items-center gap-2">
+        <button id="muteBtn" onclick="toggleMute()" title="كتم / تشغيل الصوت" class="bg-emerald-950/90 text-yellow-400 p-3.5 rounded-full shadow-2xl border-2 border-yellow-500/50 text-xl hover:scale-110 active:scale-95 transition-transform cursor-pointer">
+            🔊
+        </button>
+        <button id="floatingHomeBtn" onclick="confirmGoHome()" title="الرجوع للرئيسية والبدء من جديد" class="hidden bg-red-950/90 hover:bg-red-900 text-yellow-300 border-2 border-yellow-500/50 px-3.5 py-2.5 rounded-2xl shadow-2xl text-sm font-bold transition-all hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-1.5">
+            <span>🏠</span>
+            <span class="hidden sm:inline">الرئيسية</span>
+        </button>
+        <label id="filePickerLabel" title="اضغط هنا لتحديد ملف الصوت من جهازك إذا لم يعمل تلقائياً" class="hidden cursor-pointer bg-red-950/90 hover:bg-red-900 border border-yellow-400/60 text-yellow-300 text-xs px-3 py-2 rounded-xl shadow-lg transition-colors">
+            📁 اختر ملف back
+            <input type="file" id="audioPicker" accept="audio/*" class="hidden" onchange="loadCustomAudio(this)">
+        </label>
+    </div>
+
+    <!-- 1. شاشة البداية -->
+    <main id="startScreen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+        <div class="luxury-card max-w-xl w-full p-6 md:p-8 text-center border-2 border-yellow-500/60 flex flex-col items-center relative overflow-hidden">
+            <div class="flex items-center justify-center gap-6 mb-6">
+                <img src="school.png" onerror="tryNextExt(this, ['school.jpg', 'school.jpeg', 'school.webp'])" class="circle-logo w-24 h-24 md:w-28 md:h-28" alt="School">
+                <div class="h-16 w-0.5 bg-yellow-500/40"></div>
+                <img src="math.png" onerror="tryNextExt(this, ['math.jpg', 'math.jpeg', 'math.webp'])" class="circle-logo w-24 h-24 md:w-28 md:h-28" alt="Math">
+            </div>
+
+            <h1 class="text-3xl md:text-5xl font-black text-yellow-400 mb-2">المسابقة الثامنة</h1>
+            <h2 class="text-2xl md:text-4xl font-black text-white mb-1">مادة الرياضيات</h2>
+            <p class="text-lg md:text-2xl font-bold text-emerald-400 mb-2">درسا: المساحة والمحيط (1) & تمييز المضلعات</p>
+            <p class="text-sm md:text-base text-slate-300 font-semibold mb-6">مدرسة السلطان فيصل بن تركي للبنين</p>
+
+            <button onclick="startGame()" class="btn-action-gold text-xl md:text-2xl px-12 py-3.5 w-full max-w-sm mb-2 cursor-pointer">
+                🚀 ابدأ المسابقة
+            </button>
+        </div>
+    </main>
+
+    <!-- 2. ساحة التحدي -->
+    <main id="gameScreen" class="hidden flex-1 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+        <aside class="lg:col-span-4 flex flex-col gap-4">
+            
+            <!-- مستطيل الدور الحالي -->
+            <div class="champ-card-bg p-3.5 text-center border-yellow-500/50 flex items-center justify-between gap-3 shadow-lg">
+                <span class="text-sm text-yellow-300 font-bold">الدور الحالي:</span>
+                <span id="currentTeamName" class="text-lg md:text-xl font-black text-white bg-black/40 border border-yellow-400/40 px-3 py-1 rounded-xl shadow-inner">فريق الصقور 🦅</span>
+            </div>
+
+            <!-- لوحة الفرق والمتصدرين (6 فرق) -->
+            <div class="champ-card-bg p-4 flex-1 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between border-b border-yellow-500/30 pb-2 mb-2.5 bg-black/30 p-2 rounded-xl">
+                        <span class="font-bold text-yellow-400 text-base">لوحة الفرق والمتصدرين (6 فرق)</span>
+                        <span class="text-xl">🏆</span>
+                    </div>
+                    <div id="scoreboard" class="space-y-2"></div>
+                </div>
+
+                <div class="mt-3 pt-2.5 border-t border-yellow-500/30 text-center bg-black/30 py-2 rounded-xl flex items-center justify-between px-3">
+                    <div>
+                        <span class="text-sm text-emerald-200/90 font-bold">رقم التحدي: </span>
+                        <span id="qNum" class="text-lg font-black text-yellow-400">1</span>
+                        <span class="text-sm text-emerald-200/90 font-bold"> / 30</span>
+                    </div>
+
+                    <button onclick="confirmGoHome()" class="bg-red-800/80 hover:bg-red-700 text-white border border-yellow-400/50 rounded-xl px-3 py-1.5 text-xs font-bold transition-transform active:scale-95 flex items-center gap-1 cursor-pointer">
+                        <span>🏠</span>
+                        <span>الرئيسية</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- مربع السؤال والقرص -->
+        <section class="lg:col-span-8 challenge-container p-4 md:p-8 flex flex-col items-center justify-center relative min-h-[460px]">
+            <div id="wheelSection" class="w-full flex flex-col items-center justify-center py-2">
+                <div class="relative mb-6">
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 z-30 drop-shadow-md">
+                        <svg width="46" height="54" viewBox="0 0 50 60">
+                            <path d="M25 60 L0 0 L50 0 Z" fill="#eab308" stroke="#ffffff" stroke-width="2"/>
+                            <circle cx="25" cy="10" r="6" fill="#854d0e"/>
+                        </svg>
+                    </div>
+
+                    <!-- قرص الدوران -->
+                    <svg id="wheel" class="wheel-svg w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] md:w-[400px] md:h-[400px]" viewBox="0 0 400 400">
+                        <defs id="wheelDefs"></defs>
+                        <circle cx="200" cy="200" r="198" fill="#0d2822"/>
+                        <g id="wheelSegments"></g>
+                        <g id="wheelImages"></g>
+                        <g id="wheelDividers"></g>
+                    </svg>
+
+                    <!-- الشعار في مركز القرص -->
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-yellow-400 overflow-hidden shadow-2xl bg-slate-900 flex items-center justify-center">
+                            <img src="logo.png" onerror="tryNextExt(this, ['logo.jpg', 'logo.jpeg', 'logo.webp'])" class="w-full h-full object-cover" alt="Center Logo">
+                        </div>
+                    </div>
+                </div>
+
+                <button id="spinBtn" onclick="triggerSpin()" class="btn-action-gold text-lg md:text-xl px-10 py-3 cursor-pointer">
+                    🎲 قم بتدوير القرص
+                </button>
+            </div>
+
+            <!-- قسم عرض السؤال والوسيلة البصرية -->
+            <div id="questionSection" class="hidden w-full flex-col items-center justify-center">
+                <div class="mb-3 flex justify-center">
+                    <div class="w-16 h-16 rounded-full bg-emerald-950/90 border-4 border-yellow-400 flex items-center justify-center shadow-lg">
+                        <span id="timer" class="text-2xl font-black text-yellow-400">60</span>
+                    </div>
+                </div>
+
+                <!-- مساحة الوسيلة البصرية (SVG / رسم توضيحي) -->
+                <div id="qVisual" class="question-visual-box hidden"></div>
+
+                <!-- نص السؤال -->
+                <div class="w-full bg-emerald-950/80 border border-yellow-500/30 rounded-2xl p-4 md:p-6 mb-5 text-center shadow-md backdrop-blur-sm">
+                    <p id="qText" class="text-lg md:text-2xl font-bold text-white leading-relaxed"></p>
+                </div>
+
+                <!-- خيارات الإجابة -->
+                <div id="optionsGrid" class="w-full grid grid-cols-1 md:grid-cols-2 gap-3 mb-4"></div>
+
+                <button id="nextBtn" onclick="resolveAnswer()" class="hidden btn-action-blue text-lg px-8 py-2.5 mt-2 cursor-pointer">
+                    السؤال التالي ⬅️
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- 3. شاشة النتائج -->
+    <div id="resultScreen" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="luxury-card max-w-lg w-full p-6 md:p-8 text-center border-2 border-yellow-500 flex flex-col items-center">
+            <div class="text-5xl mb-2">🏆</div>
+            <h2 class="text-2xl md:text-4xl font-black text-yellow-400 mb-4">انتهت المسابقة الثامنة!</h2>
+            <div id="finalRanking" class="space-y-2 mb-6 text-right w-full max-h-[340px] overflow-y-auto pr-1"></div>
+            <button onclick="resetToHome()" class="btn-action-gold text-lg font-black py-3 px-8 w-full cursor-pointer">
+                🔄 مسابقة جديدة والبدء من جديد
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function tryNextExt(imgEl, exts) {
+            if (!imgEl.dataset.extIndex) imgEl.dataset.extIndex = "0";
+            let idx = parseInt(imgEl.dataset.extIndex);
+            if (idx < exts.length) {
+                imgEl.src = exts[idx];
+                imgEl.dataset.extIndex = (idx + 1).toString();
+            } else {
+                imgEl.onerror = null;
+            }
+        }
+
+        const bgAudio = document.getElementById('bgMusic');
+        bgAudio.volume = 1.0;
+
+        const sfx = {
+            correct: new Audio('correct.mp3'),
+            wrong: new Audio('wrong.mp3'),
+            spin: new Audio('spin.mp3')
+        };
+
+        let isMuted = false;
+
+        bgAudio.addEventListener('error', () => {
+            console.warn("تعذر العثور على الملف تلقائياً.");
+            document.getElementById('filePickerLabel').classList.remove('hidden');
+        });
+
+        function playBackgroundMusic() {
+            if (isMuted) return;
+            bgAudio.volume = 1.0;
+            const playPromise = bgAudio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(err => {
+                    console.log("تنبيه تشغيل الصوت:", err);
+                    document.getElementById('filePickerLabel').classList.remove('hidden');
+                });
+            }
+        }
+
+        function loadCustomAudio(input) {
+            if (input.files && input.files[0]) {
+                const fileURL = URL.createObjectURL(input.files[0]);
+                bgAudio.src = fileURL;
+                bgAudio.load();
+                if (!isMuted) bgAudio.play();
+                document.getElementById('filePickerLabel').classList.add('hidden');
+            }
+        }
+
+        // الفرق الـ 6 المعتمدة في المسابقة
+        const teams = [
+            'فريق الصقور 🦅',
+            'فريق الأسود 🦁',
+            'فريق النمور 🐅',
+            'فريق الفهود 🐆',
+            'فريق الذئاب 🐺',
+            'فريق الفرسان 🐎'
+        ];
+
+        let rotation = 0; 
+        let isSpinning = false;
+        let state = { qList: [], currentQ: null, scores: [0,0,0,0,0,0], turn: 0, qCount: 0, timer: null };
+
+        const colors = ['#047857', '#b91c1c', '#d97706', '#0f766e', '#854d0e', '#15803d', '#991b1b', '#0369a1'];
+        const charNames = ['char1', 'char2', 'char3', 'char4', 'char5', 'char6', 'char7', 'char8'];
+
+        // الأسئلة الـ 30 مع الرسوم والوسائل البصرية SVG (المسابقة الثامنة)
+        const questions = [
+            // 1. تعريف المضلع والتمييز البصري
+            {
+                q: "أي من الأشكال الهندسية التالية يُعد «مُضلعاً» وفق التعريف الرياضي الصحيح؟",
+                visual: `<svg width="280" height="90" viewBox="0 0 280 90">
+                    <polygon points="35,15 65,75 10,75" fill="#10b981" stroke="#facc15" stroke-width="2"/>
+                    <text x="37" y="87" fill="#fff" font-size="12" text-anchor="middle">(أ)</text>
+                    <circle cx="105" cy="45" r="30" fill="#3b82f6" stroke="#facc15" stroke-width="2"/>
+                    <text x="105" y="87" fill="#fff" font-size="12" text-anchor="middle">(ب)</text>
+                    <polyline points="150,75 170,20 190,75 205,30" fill="none" stroke="#ef4444" stroke-width="3"/>
+                    <text x="177" y="87" fill="#fff" font-size="12" text-anchor="middle">(ج)</text>
+                    <rect x="230" y="25" width="40" height="40" fill="#f59e0b" stroke="#facc15" stroke-width="2"/>
+                    <polygon points="230,25 250,10 290,10 270,25" fill="#d97706"/>
+                    <polygon points="270,25 290,10 290,50 270,65" fill="#b45309"/>
+                    <text x="250" y="87" fill="#fff" font-size="12" text-anchor="middle">(د)</text>
+                </svg>`,
+                o: ["الشكل (أ) المثلث فقط", "الشكل (ب) الدائرة", "الشكل (ج) الخط المفتوح", "الشكل (د) المكعب المجسم"],
+                a: 0
+            },
+
+            // 2. سؤال الكتاب: لماذا لا يعتبر الهلال مضلعاً؟
+            {
+                q: "الشكل المقابل (شكل الهلال) ليس مضلعاً؛ ما السبب الرياضي الصحيح لذلك؟",
+                visual: `<svg width="130" height="110" viewBox="0 0 130 110">
+                    <path d="M70,10 A45,45 0 1,0 70,100 A35,35 0 0,1 70,10 Z" fill="#ec4899" stroke="#facc15" stroke-width="2.5"/>
+                </svg>`,
+                o: ["لأنه يتكون من خطوط ومنحنيات وليس قطعاً مستقيمة", "لأنه شكل ثلاثي الأبعاد", "لأنه شكل مفتوح وغير مغلق", "لأن أضلاعه متساوية"],
+                a: 0
+            },
+
+            // 3. سؤال الكتاب: لماذا لا يعتبر المكعب مضلعاً؟
+            {
+                q: "لماذا لا يُصنَّف «المكعب» المقابل ضمن المضلعات؟",
+                visual: `<svg width="130" height="110" viewBox="0 0 130 110">
+                    <polygon points="20,40 70,40 70,90 20,90" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+                    <polygon points="20,40 50,15 100,15 70,40" fill="#bae6fd" stroke="#38bdf8" stroke-width="2"/>
+                    <polygon points="70,40 100,15 100,65 70,90" fill="#0369a1" stroke="#38bdf8" stroke-width="2"/>
+                </svg>`,
+                o: ["لأنه مجسم ثلاثي الأبعاد والمضلع يجب أن يكون ثنائياً", "لأن أضلاعه خطوط منحنية", "لأنه شكل مفتوح من إحدى جهاته", "لأن له زوايا قائمة"],
+                a: 0
+            },
+
+            // 4. سؤال الكتاب: الشكل المفتوح
+            {
+                q: "تأمل الشكل الهندسي المقابل؛ ما سبب استبعاده من أن يكون مضلعاً؟",
+                visual: `<svg width="180" height="95" viewBox="0 0 180 95">
+                    <polyline points="30,20 15,20 15,80 165,80 165,20 85,20" fill="none" stroke="#f97316" stroke-width="4"/>
+                </svg>`,
+                o: ["لأنه شكل غير مغلق (مفتوح)", "لأن خطوطه منحنية وليست مستقيمة", "لأنه مجسم ثلاثي الأبعاد", "لأنه يحتوي على زوايا قائمة"],
+                a: 0
+            },
+
+            // 5. تمييز شبه المنحرف
+            {
+                q: "ما المسمى الأكثر دقة للشكل الرباعي المقابل الذي يحتوي على زوج واحد فقط من الأضلاع المتوازية؟",
+                visual: `<svg width="180" height="100" viewBox="0 0 180 100">
+                    <polygon points="40,20 140,20 165,80 15,80" fill="#d97706" stroke="#facc15" stroke-width="2.5"/>
+                    <line x1="85" y1="20" x2="95" y2="20" stroke="#fff" stroke-width="2"/>
+                    <line x1="85" y1="80" x2="95" y2="80" stroke="#fff" stroke-width="2"/>
+                </svg>`,
+                o: ["شبه المنحرف", "متوازي الأضلاع", "المعين", "المستطيل"],
+                a: 0
+            },
+
+            // 6. تمييز متوازي الأضلاع
+            {
+                q: "مضلع رباعي فيه كل ضلعين متقابلين متوازيان ومتطابقان وزواياه ليست قائمة، فما اسمه؟",
+                visual: `<svg width="190" height="95" viewBox="0 0 190 95">
+                    <polygon points="50,20 175,20 135,75 10,75" fill="#059669" stroke="#6ee7b7" stroke-width="2.5"/>
+                </svg>`,
+                o: ["متوازي الأضلاع", "شبه المنحرف", "المستطيل", "الدالتون"],
+                a: 0
+            },
+
+            // 7. شكل الطائرة الورقية (الدالتون)
+            {
+                q: "ما اسم الشكل الرباعي المقابل الذي يتكون من زوجين من الأضلاع المتجاورة المتطابقة؟",
+                visual: `<svg width="130" height="130" viewBox="0 0 130 130">
+                    <polygon points="65,10 110,50 65,120 20,50" fill="#8b5cf6" stroke="#c084fc" stroke-width="2.5"/>
+                    <line x1="38" y1="28" x2="44" y2="34" stroke="#fff" stroke-width="2"/>
+                    <line x1="86" y1="34" x2="92" y2="28" stroke="#fff" stroke-width="2"/>
+                </svg>`,
+                o: ["شكل الطائرة الورقية (الدالتون)", "المعين", "المربع", "شبه المنحرف"],
+                a: 0
+            },
+
+            // 8. المعين
+            {
+                q: "مضلع رباعي جميع أضلاعه الأربعة متطابقة في الطول ولكن زواياه ليست قائمة. ما هو؟",
+                visual: `<svg width="130" height="130" viewBox="0 0 130 130">
+                    <polygon points="65,15 115,65 65,115 15,65" fill="#14b8a6" stroke="#5eead4" stroke-width="2.5"/>
+                </svg>`,
+                o: ["المعين", "المربع", "المستطيل", "متوازي الأضلاع"],
+                a: 0
+            },
+
+            // 9. خصائص المستطيل
+            {
+                q: "أي الخصائص الآتية تنطبق على «المستطيل» وتُميزه عن متوازي الأضلاع العام؟",
+                visual: `<svg width="180" height="100" viewBox="0 0 180 100">
+                    <rect x="25" y="20" width="130" height="60" fill="#be185d" stroke="#f472b6" stroke-width="2.5"/>
+                    <rect x="25" y="20" width="10" height="10" fill="none" stroke="#facc15" stroke-width="1.5"/>
+                    <rect x="145" y="20" width="10" height="10" fill="none" stroke="#facc15" stroke-width="1.5"/>
+                    <rect x="25" y="70" width="10" height="10" fill="none" stroke="#facc15" stroke-width="1.5"/>
+                    <rect x="145" y="70" width="10" height="10" fill="none" stroke="#facc15" stroke-width="1.5"/>
+                </svg>`,
+                o: ["جميع زواياه الأربع قائمة (90°)", "جميع أضلاعه الأربعة متساوية في الطول", "فيه زوج واحد فقط من الأضلاع المتوازية", "له 3 أضلاع فقط"],
+                a: 0
+            },
+
+            // 10. استكشف النمط (صورة 3): عدد أشكال شبه المنحرف
+            {
+                q: "في النمط الهندسي المقابل (من نشاط استكشف)، كم عدد أشكال شبه المنحرف الملونة؟",
+                visual: `<svg width="140" height="140" viewBox="0 0 140 140">
+                    <polygon points="70,10 130,70 70,130 10,70" fill="none" stroke="#facc15" stroke-width="2"/>
+                    <polygon points="70,10 100,40 70,70 40,40" fill="#ea580c" opacity="0.9" stroke="#fff" stroke-width="1"/>
+                    <polygon points="130,70 100,40 70,70 100,100" fill="#0284c7" opacity="0.9" stroke="#fff" stroke-width="1"/>
+                    <polygon points="70,130 100,100 70,70 40,100" fill="#ea580c" opacity="0.9" stroke="#fff" stroke-width="1"/>
+                    <polygon points="10,70 40,40 70,70 40,100" fill="#0284c7" opacity="0.9" stroke="#fff" stroke-width="1"/>
+                    <rect x="62" y="62" width="16" height="16" fill="#16a34a" transform="rotate(45 70 70)"/>
+                </svg>`,
+                o: ["4 أشكال", "2 شكلان", "6 أشكال", "8 أشكال"],
+                a: 0
+            },
+
+            // 11. استكشف النمط (صورة 3): أشكال الطائرة الورقية الدالتون
+            {
+                q: "في نفس النمط الهندسي السابق، كم عدد أشكال الطائرة الورقية (الدالتون) الظاهرة؟",
+                visual: `<svg width="130" height="130" viewBox="0 0 130 130">
+                    <polygon points="65,10 120,65 65,120 10,65" fill="#1e293b" stroke="#facc15" stroke-width="2"/>
+                    <polygon points="65,25 90,65 65,75 40,65" fill="#38bdf8" stroke="#fff" stroke-width="1.5"/>
+                    <polygon points="65,105 90,65 65,75 40,65" fill="#fb923c" stroke="#fff" stroke-width="1.5"/>
+                </svg>`,
+                o: ["4 أشكال", "شكلان فقط", "3 أشكال", "5 أشكال"],
+                a: 0
+            },
+
+            // 12. استكشف النمط: المربع المركزي والزوايا القائمة
+            {
+                q: "كم عدد المربعات في مركز النمط وكم زاوية قائمة يحتوي هذا المربع؟",
+                visual: `<svg width="110" height="110" viewBox="0 0 110 110">
+                    <rect x="25" y="25" width="60" height="60" fill="#22c55e" stroke="#facc15" stroke-width="3"/>
+                    <path d="M25,35 L35,35 L35,25 M75,25 L75,35 L85,35 M85,75 L75,75 L75,85 M25,75 L35,75 L35,85" stroke="#fff" stroke-width="2" fill="none"/>
+                </svg>`,
+                o: ["مربع واحد، وله 4 زوايا قائمة", "مربعان، ولهما 8 زوايا قائمة", "لا توجد مربعات", "مربع واحد، وله زاوية قائمة واحدة"],
+                a: 0
+            },
+
+            // 13. تصنيف الأشكال (صورة 4 - شكل هـ): شبه منحرف قائم
+            {
+                q: "الشكل المقابل له زوج واحد من الأضلاع المتوازية وزاويتان قائمتان. ما المسمى الأكثر دقة له؟",
+                visual: `<svg width="170" height="100" viewBox="0 0 170 100">
+                    <polygon points="30,20 145,35 145,85 30,85" fill="#e11d48" stroke="#fecdd3" stroke-width="2"/>
+                    <rect x="30" y="73" width="12" height="12" fill="none" stroke="#facc15" stroke-width="1.5"/>
+                    <rect x="30" y="20" width="12" height="12" fill="none" stroke="#facc15" stroke-width="1.5"/>
+                </svg>`,
+                o: ["شبه منحرف قائم الزاوية", "متوازي أضلاع", "مستطيل", "دالتون"],
+                a: 0
+            },
+
+            // 14. تعريف المضلع نصياً
+            {
+                q: "«شكل مغلق ثنائي الأبعاد، يتكون من ثلاث قطع مستقيمة أو أكثر».. هذا هو المفهوم الرياضي لـ:",
+                visual: null,
+                o: ["المُضلَّع", "المُجسَّم", "الدائرة", "الزاوية المستقيمة"],
+                a: 0
+            },
+
+            // 15. العلاقة بين المربع والمستطيل
+            {
+                q: "أي العبارات الرياضية التالية تُعد صحيحة دائماً؟",
+                visual: null,
+                o: ["كل مربع هو مستطيل تساوت أطوال أضلاعه", "كل مستطيل هو مربع بالضرورة", "شبه المنحرف فيه زوجان من الأضلاع المتوازية", "المعين جميع زواياه قائمة دائماً"],
+                a: 0
+            },
+
+            // 16. نشاط استكشف (صورة 1): طول ضلع البلاطة المربعة
+            {
+                q: "خمس قطع من البلاط المربع مساحة كُلّ منها 16 سم². ما طول ضلع البلاطة المربعة الواحدة؟",
+                visual: `<svg width="180" height="80" viewBox="0 0 180 80">
+                    <rect x="10" y="15" width="50" height="50" fill="#dc2626" stroke="#facc15" stroke-width="2"/>
+                    <text x="35" y="45" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">16 سم²</text>
+                    <text x="35" y="75" fill="#facc15" font-size="12" text-anchor="middle">؟ سم</text>
+                    <rect x="70" y="25" width="30" height="30" fill="#dc2626" opacity="0.7"/>
+                    <rect x="105" y="25" width="30" height="30" fill="#dc2626" opacity="0.7"/>
+                    <rect x="140" y="25" width="30" height="30" fill="#dc2626" opacity="0.7"/>
+                </svg>`,
+                o: ["4 سم", "8 سم", "2 سم", "16 سم"],
+                a: 0
+            },
+
+            // 17. نشاط استكشف (صورة 1): ترتيب 5 بلاطات لمحيط 40 سم
+            {
+                q: "إذا كان طول ضلع البلاطة 4 سم، لتكوين شكل محيطه الخارجي 40 سم، فكم ضلعاً خارجياً يجب أن يُحيط بالشكل؟",
+                visual: `<svg width="180" height="90" viewBox="0 0 180 90">
+                    <rect x="40" y="10" width="30" height="30" fill="#b91c1c" stroke="#fff" stroke-width="1.5"/>
+                    <rect x="70" y="10" width="30" height="30" fill="#b91c1c" stroke="#fff" stroke-width="1.5"/>
+                    <rect x="40" y="40" width="30" height="30" fill="#b91c1c" stroke="#fff" stroke-width="1.5"/>
+                    <rect x="70" y="40" width="30" height="30" fill="#b91c1c" stroke="#fff" stroke-width="1.5"/>
+                    <rect x="100" y="40" width="30" height="30" fill="#b91c1c" stroke="#fff" stroke-width="1.5"/>
+                </svg>`,
+                o: ["10 أضلاع خارجية (10 × 4 = 40 سم)", "12 ضلعاً خارجياً", "8 أضلاع خارجية", "14 ضلعاً خارجياً"],
+                a: 0
+            },
+
+            // 18. تمرين النمط (صورة 1): النمط الثاني والمساحة الزرقاء
+            {
+                q: "في النمط الثاني المقابل: مربع أصفر (طول ضلعه 2 سم) داخل مربع أزرق (طول ضلعه 4 سم). ما المساحة المرئية الزرقاء؟",
+                visual: `<svg width="120" height="120" viewBox="0 0 120 120">
+                    <rect x="15" y="15" width="90" height="90" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+                    <rect x="37.5" y="37.5" width="45" height="45" fill="#facc15" stroke="#ca8a04" stroke-width="1.5"/>
+                </svg>`,
+                o: ["12 سم² (16 - 4)", "16 سم²", "8 سم²", "4 سم²"],
+                a: 0
+            },
+
+            // 19. تمرين النمط (صورة 1): النمط الثالث والمساحة الصفراء
+            {
+                q: "في النمط الثالث: طول ضلع المربع الخارجي الأصفر 6 سم، بداخله المربع الأزرق 4 سم وبداخله المربع الأصفر 2 سم. ما المساحة المرئية الصفراء؟",
+                visual: `<svg width="130" height="130" viewBox="0 0 130 130">
+                    <rect x="10" y="10" width="110" height="110" fill="#facc15" stroke="#ca8a04" stroke-width="2"/>
+                    <rect x="25" y="25" width="80" height="80" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
+                    <rect x="45" y="45" width="40" height="40" fill="#facc15" stroke="#ca8a04" stroke-width="1.5"/>
+                </svg>`,
+                o: ["24 سم² (20 + 4)", "36 سم²", "16 سم²", "20 سم²"],
+                a: 0
+            },
+
+            // 20. تمرين النمط: مساحة المربع الرابع الكلية
+            {
+                q: "إذا كان طول ضلع المربع في النمط الرابع يساوي 8 سم، فكم تبلغ المساحة الكلية لهذا المربع؟",
+                visual: `<svg width="120" height="100" viewBox="0 0 120 100">
+                    <rect x="15" y="10" width="90" height="80" fill="#0369a1" stroke="#facc15" stroke-width="2"/>
+                    <text x="60" y="55" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">8 سم × 8 سم</text>
+                </svg>`,
+                o: ["64 سم²", "32 سم²", "16 سم²", "48 سم²"],
+                a: 0
+            },
+
+            // 21. تقدير المساحة بالشبكة (صورة 2): مساحة البحيرة
+            {
+                q: "في خريطة الجزيرة، إذا كانت مساحة كل مربع = 1 كم²، وتغطي البحيرة ما يقارب 6 مربعات، فما مساحتها التقريبية؟",
+                visual: `<svg width="180" height="100" viewBox="0 0 180 100">
+                    <defs>
+                        <pattern id="grid1" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <rect width="20" height="20" fill="#0284c7" opacity="0.2"/>
+                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#38bdf8" stroke-width="0.7"/>
+                        </pattern>
+                    </defs>
+                    <rect width="180" height="100" fill="url(#grid1)"/>
+                    <path d="M60,30 Q90,20 100,50 Q110,80 80,75 Q60,85 55,55 Z" fill="#38bdf8" stroke="#0284c7" stroke-width="2"/>
+                    <text x="80" y="55" fill="#0c4a6e" font-size="12" font-weight="bold" text-anchor="middle">البحيرة</text>
+                </svg>`,
+                o: ["حوالي 6 كم²", "حوالي 20 كم²", "حوالي 50 كم²", "حوالي 1 كم²"],
+                a: 0
+            },
+
+            // 22. تقدير المساحة بالشبكة (صورة 2): مساحة منطقة الغابة
+            {
+                q: "بالنظر إلى خريطة الجزيرة، ما التقدير الأنسب لمساحة منطقة «الغابة» المظللة بالأشجار الخضراء الداكنة؟",
+                visual: `<svg width="180" height="100" viewBox="0 0 180 100">
+                    <defs>
+                        <pattern id="grid2" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <rect width="20" height="20" fill="#15803d" opacity="0.2"/>
+                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#4ade80" stroke-width="0.7"/>
+                        </pattern>
+                    </defs>
+                    <rect width="180" height="100" fill="url(#grid2)"/>
+                    <ellipse cx="90" cy="50" rx="65" ry="32" fill="#166534" stroke="#86efac" stroke-width="2"/>
+                    <text x="90" y="55" fill="#dcfce7" font-size="13" font-weight="bold" text-anchor="middle">منطقة الغابة 🌲</text>
+                </svg>`,
+                o: ["حوالي 20 إلى 22 كم²", "حوالي 5 كم² فقط", "حوالي 80 كم²", "حوالي 2 كم²"],
+                a: 0
+            },
+
+            // 23. حساب محيط المستطيل (صورة 2 - شكل أ البنفسجي)
+            {
+                q: "احسب محيط المستطيل البنفسجي المقابل إذا كان طوله 6 سم وعرضه 3 سم:",
+                visual: `<svg width="190" height="95" viewBox="0 0 190 95">
+                    <rect x="25" y="15" width="140" height="65" fill="#7e22ce" stroke="#d8b4fe" stroke-width="2.5"/>
+                    <text x="95" y="10" fill="#facc15" font-size="12" font-weight="bold" text-anchor="middle">الطول = 6 سم</text>
+                    <text x="175" y="52" fill="#facc15" font-size="12" font-weight="bold" text-anchor="middle">3 سم</text>
+                </svg>`,
+                o: ["18 سم (2 × (6 + 3))", "9 سم", "18 سم²", "12 سم"],
+                a: 0
+            },
+
+            // 24. محيط المستطيل بالمليمترات وتحويله للسنتيمتر (صورة 2 - شكل ب)
+            {
+                q: "مستطيل أخضر أبعاده 50 ملم و 25 ملم. كم يبلغ محيطه بوحدة السنتيمتر (سم)؟",
+                visual: `<svg width="180" height="90" viewBox="0 0 180 90">
+                    <rect x="25" y="15" width="130" height="60" fill="#15803d" stroke="#86efac" stroke-width="2.5"/>
+                    <text x="90" y="50" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">50 ملم × 25 ملم</text>
+                </svg>`,
+                o: ["15 سم (150 ملم)", "150 سم", "7.5 سم", "30 سم"],
+                a: 0
+            },
+
+            // 25. محيط ومساحة المربع
+            {
+                q: "حديقة مربعة الشكل طول ضلعها 7 أمتار. ما محيطها الخارجي وما مساحتها على الترتيب؟",
+                visual: `<svg width="120" height="100" viewBox="0 0 120 100">
+                    <rect x="20" y="10" width="80" height="80" fill="#047857" stroke="#facc15" stroke-width="3"/>
+                    <text x="60" y="55" fill="#facc15" font-size="14" font-weight="bold" text-anchor="middle">7 م</text>
+                </svg>`,
+                o: ["المحيط = 28 م ، المساحة = 49 م²", "المحيط = 49 م ، المساحة = 28 م²", "المحيط = 14 م ، المساحة = 49 م²", "المحيط = 28 م ، المساحة = 14 م²"],
+                a: 0
+            },
+
+            // 26. محيط شكل مركب
+            {
+                q: "ما محيط الشكل ثنائي الأبعاد الموضح أطوال أضلاعه بالأمتار؟",
+                visual: `<svg width="170" height="110" viewBox="0 0 170 110">
+                    <polygon points="25,15 95,15 95,50 145,50 145,95 25,95" fill="#0f766e" stroke="#2dd4bf" stroke-width="2.5"/>
+                    <text x="60" y="12" fill="#facc15" font-size="10" text-anchor="middle">5 م</text>
+                    <text x="15" y="55" fill="#facc15" font-size="10" text-anchor="middle">6 م</text>
+                    <text x="85" y="105" fill="#facc15" font-size="10" text-anchor="middle">9 م</text>
+                    <text x="155" y="75" fill="#facc15" font-size="10" text-anchor="middle">3 م</text>
+                </svg>`,
+                o: ["30 متراً", "24 متراً", "36 متراً", "18 متراً"],
+                a: 0
+            },
+
+            // 27. مفردات الدرس: تعريف المساحة والمحيط
+            {
+                q: "ما هو التعريف الدقيق لكل من «المحيط» و«المساحة»؟",
+                visual: null,
+                o: [
+                    "المحيط: طول الخط المحيط بالشكل من الخارج، والمساحة: عدد الوحدات المربعة داخل الشكل",
+                    "المحيط: عدد المربعات بالداخل، والمساحة: طول الخط الخارجي",
+                    "المحيط يقاس بالسم²، بينما المساحة تقاس بالمتر الطولي",
+                    "المحيط يخص الأشكال ثلاثية الأبعاد، والمساحة للمضلعات فقط"
+                ],
+                a: 0
+            },
+
+            // 28. مقارنة مستطيلين لهما نفس المحيط
+            {
+                q: "مستطيلان محيط كل منهما 20 سم؛ الأول أبعاده (6 سم × 4 سم) والثاني (9 سم × 1 سم). أيهما ذو مساحة أكبر؟",
+                visual: `<svg width="220" height="90" viewBox="0 0 220 90">
+                    <rect x="15" y="20" width="75" height="50" fill="#1e3a8a" stroke="#60a5fa" stroke-width="2"/>
+                    <text x="52" y="50" fill="#fff" font-size="11" text-anchor="middle">6 × 4</text>
+                    <rect x="110" y="38" width="95" height="15" fill="#831843" stroke="#f472b6" stroke-width="2"/>
+                    <text x="157" y="50" fill="#fff" font-size="11" text-anchor="middle">9 × 1</text>
+                </svg>`,
+                o: ["المستطيل الأول مساحته أكبر (24 سم² مقابل 9 سم²)", "المستطيل الثاني مساحته أكبر", "المستطيلان متساويان تماماً في المساحة", "لا يمكن المقارنة لعدم توفر البيانات"],
+                a: 0
+            },
+
+            // 29. زوايا شبه المنحرف القائم
+            {
+                q: "شبه منحرف قائم الزاوية يحتوي على زاويتين قائمتين، فكم مجموع قياس هاتين الزاويتين معاً؟",
+                visual: `<svg width="150" height="90" viewBox="0 0 150 90">
+                    <polygon points="30,15 125,15 85,75 30,75" fill="#ca8a04" stroke="#fef08a" stroke-width="2"/>
+                    <rect x="30" y="15" width="10" height="10" fill="none" stroke="#fff" stroke-width="1.5"/>
+                    <rect x="30" y="65" width="10" height="10" fill="none" stroke="#fff" stroke-width="1.5"/>
+                </svg>`,
+                o: ["180° (90° + 90°)", "90°", "360°", "270°"],
+                a: 0
+            },
+
+            // 30. التحدي الختامي: تصنيف المضلعات الرباعية
+            {
+                q: "أي الأشكال الرباعية الآتية يتصف بأن: «جميع أضلاعه متطابقة، وجميع زواياه قائمة، وأقطاره متعامدة ومتساوية»؟",
+                visual: `<svg width="220" height="70" viewBox="0 0 220 70">
+                    <rect x="15" y="10" width="50" height="50" fill="#16a34a" stroke="#facc15" stroke-width="2"/>
+                    <rect x="80" y="15" width="65" height="40" fill="#2563eb" stroke="#facc15" stroke-width="2"/>
+                    <polygon points="180,10 205,35 180,60 155,35" fill="#d97706" stroke="#facc15" stroke-width="2"/>
+                </svg>`,
+                o: ["المربع", "المعين", "المستطيل", "متوازي الأضلاع"],
+                a: 0
+            }
+        ];
+
+        window.onload = () => {
+            const svgSegments = document.getElementById('wheelSegments');
+            const svgImages = document.getElementById('wheelImages');
+            const svgDividers = document.getElementById('wheelDividers');
+            const defs = document.getElementById('wheelDefs');
+            const count = 8; 
+            const slice = 360 / count;
+
+            for(let i=0; i<count; i++) {
+                const start = i * slice; 
+                const end = (i+1) * slice;
+                const x1 = 200 + 198 * Math.cos(Math.PI * (start-90)/180); 
+                const y1 = 200 + 198 * Math.sin(Math.PI * (start-90)/180);
+                const x2 = 200 + 198 * Math.cos(Math.PI * (end-90)/180); 
+                const y2 = 200 + 198 * Math.sin(Math.PI * (end-90)/180);
+                
+                // 1. رسم وتلوين شريحة المثلث / القطاع
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("d", `M200,200 L${x1},${y1} A198,198 0 0,1 ${x2},${y2} Z`);
+                path.setAttribute("fill", colors[i % colors.length]); 
+                svgSegments.appendChild(path);
+                
+                // 2. إنشاء مسار قص (ClipPath) بمقاس مثلث الشريحة
+                const clip = document.createElementNS("http://www.w3.org/2000/svg", "clipPath");
+                clip.setAttribute("id", `clip-wedge-${i}`);
+                const clipPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                clipPath.setAttribute("d", `M200,200 L${x1},${y1} A198,198 0 0,1 ${x2},${y2} Z`);
+                clip.appendChild(clipPath);
+                defs.appendChild(clip);
+
+                // 3. وضع الصورة لملء القطاع
+                const mid = start + slice / 2;
+                const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                g.setAttribute("clip-path", `url(#clip-wedge-${i})`);
+
+                const img = document.createElementNS("http://www.w3.org/2000/svg", "image");
+                const baseName = charNames[i];
+                
+                img.setAttribute("x", "110");
+                img.setAttribute("y", "2");
+                img.setAttribute("width", "180");
+                img.setAttribute("height", "200");
+                img.setAttribute("preserveAspectRatio", "xMidYMid slice");
+                img.setAttribute("transform", `rotate(${mid}, 200, 200)`);
+                
+                img.href.baseVal = `${baseName}.png`;
+                img.addEventListener('error', function errHandler() {
+                    if (this.href.baseVal.endsWith('.png')) {
+                        this.href.baseVal = `${baseName}.jpg`;
+                    } else if (this.href.baseVal.endsWith('.jpg')) {
+                        this.href.baseVal = `${baseName}.jpeg`;
+                    } else if (this.href.baseVal.endsWith('.jpeg')) {
+                        this.href.baseVal = `${baseName}.webp`;
+                    }
+                });
+
+                g.appendChild(img);
+                svgImages.appendChild(g);
+
+                // 4. خط الفاصل الذهبي البارز
+                const darkLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                darkLine.setAttribute("x1", "200");
+                darkLine.setAttribute("y1", "200");
+                darkLine.setAttribute("x2", x1);
+                darkLine.setAttribute("y2", y1);
+                darkLine.setAttribute("stroke", "#0b1315");
+                darkLine.setAttribute("stroke-width", "6");
+                svgDividers.appendChild(darkLine);
+
+                const goldLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                goldLine.setAttribute("x1", "200");
+                goldLine.setAttribute("y1", "200");
+                goldLine.setAttribute("x2", x1);
+                goldLine.setAttribute("y2", y1);
+                goldLine.setAttribute("stroke", "#facc15");
+                goldLine.setAttribute("stroke-width", "3.5");
+                goldLine.setAttribute("class", "divider-line");
+                svgDividers.appendChild(goldLine);
+            }
+
+            const outerRim = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            outerRim.setAttribute("cx", "200");
+            outerRim.setAttribute("cy", "200");
+            outerRim.setAttribute("r", "197");
+            outerRim.setAttribute("fill", "none");
+            outerRim.setAttribute("stroke", "#facc15");
+            outerRim.setAttribute("stroke-width", "3");
+            svgDividers.appendChild(outerRim);
+        };
+
+        function startGame() {
+            playBackgroundMusic();
+            
+            document.getElementById('startScreen').classList.add('hidden');
+            const gScreen = document.getElementById('gameScreen');
+            gScreen.classList.remove('hidden');
+            gScreen.classList.add('grid');
+            document.getElementById('floatingHomeBtn').classList.remove('hidden');
+            
+            state.qList = [...questions].sort(() => Math.random() - 0.5);
+            updateUI();
+        }
+
+        function confirmGoHome() {
+            if (confirm("هل ترغب فعلاً في العودة إلى الواجهة الرئيسية والبدء من جديد؟")) {
+                resetToHome();
+            }
+        }
+
+        function resetToHome() {
+            if(state.timer) clearInterval(state.timer);
+            isSpinning = false;
+            stopSfx('spin');
+            
+            // إعادة تصفير النقاط للفرق الـ 6
+            state = { qList: [], currentQ: null, scores: new Array(teams.length).fill(0), turn: 0, qCount: 0, timer: null };
+            rotation = 0;
+            const wheel = document.getElementById('wheel');
+            if (wheel) wheel.style.transform = `rotate(0deg)`;
+            
+            document.getElementById('gameScreen').classList.add('hidden');
+            document.getElementById('gameScreen').classList.remove('grid');
+            document.getElementById('resultScreen').classList.add('hidden');
+            document.getElementById('floatingHomeBtn').classList.add('hidden');
+            document.getElementById('startScreen').classList.remove('hidden');
+
+            const qSection = document.getElementById('questionSection');
+            const wheelSection = document.getElementById('wheelSection');
+            qSection.classList.add('hidden');
+            qSection.classList.remove('flex');
+            wheelSection.style.display = 'flex';
+            document.getElementById('nextBtn').classList.add('hidden');
+            document.getElementById('spinBtn').disabled = false;
+        }
+
+        function triggerSpin() {
+            if(isSpinning || state.qList.length === 0) return;
+            isSpinning = true;
+            document.getElementById('spinBtn').disabled = true;
+            
+            playSfx('spin');
+
+            const extraSpins = 1800; 
+            const randomAngle = Math.floor(Math.random() * 360);
+            rotation += extraSpins + randomAngle;
+            document.getElementById('wheel').style.transform = `rotate(${rotation}deg)`;
+            
+            setTimeout(() => { 
+                stopSfx('spin');
+                setTimeout(() => { 
+                    isSpinning = false; 
+                    document.getElementById('spinBtn').disabled = false;
+                    showQuestion(); 
+                }, 1200); 
+            }, 4000); 
+        }
+
+        function showQuestion() {
+            state.currentQ = state.qList.pop();
+            const qSection = document.getElementById('questionSection');
+            const wheelSection = document.getElementById('wheelSection');
+            
+            wheelSection.style.display = 'none'; 
+            document.getElementById('nextBtn').classList.add('hidden'); 
+            qSection.classList.remove('hidden');
+            qSection.classList.add('flex');
+
+            const visualBox = document.getElementById('qVisual');
+            if (state.currentQ.visual) {
+                visualBox.innerHTML = state.currentQ.visual;
+                visualBox.classList.remove('hidden');
+            } else {
+                visualBox.innerHTML = '';
+                visualBox.classList.add('hidden');
+            }
+
+            document.getElementById('qText').textContent = state.currentQ.q;
+            const grid = document.getElementById('optionsGrid'); 
+            grid.innerHTML = '';
+            
+            let ops = state.currentQ.o.map((txt, i) => ({txt, i})).sort(() => Math.random() - 0.5);
+
+            ops.forEach((op) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-option-btn w-full';
+                btn.textContent = op.txt; 
+                btn.onclick = () => checkAnswer(op.i, btn);
+                grid.appendChild(btn);
+            });
+            startTimer();
+        }
+
+        function startTimer() {
+            let t = 60; 
+            document.getElementById('timer').textContent = t;
+            if(state.timer) clearInterval(state.timer);
+            state.timer = setInterval(() => { 
+                t--; 
+                document.getElementById('timer').textContent = t; 
+                if(t <= 0) { clearInterval(state.timer); forceShowAnswer(); } 
+            }, 1000);
+        }
+
+        function forceShowAnswer() {
+            const btns = document.querySelectorAll('.quiz-option-btn');
+            btns.forEach(b => {
+                b.disabled = true;
+                if(b.textContent === state.currentQ.o[state.currentQ.a]) b.classList.add('correct');
+            });
+            playSfx('wrong');
+            document.getElementById('nextBtn').classList.remove('hidden');
+        }
+
+        function checkAnswer(idx, btn) {
+            clearInterval(state.timer);
+            const btns = document.querySelectorAll('.quiz-option-btn');
+            btns.forEach(b => b.disabled = true);
+            
+            if(idx === state.currentQ.a) {
+                btn.classList.add('correct'); 
+                playSfx('correct');
+                state.scores[state.turn]++;
+            } else {
+                btn.classList.add('wrong'); 
+                playSfx('wrong');
+                btns.forEach(b => { if(b.textContent === state.currentQ.o[state.currentQ.a]) b.classList.add('correct'); });
+            }
+            document.getElementById('nextBtn').classList.remove('hidden');
+        }
+
+        function resolveAnswer() {
+            state.qCount++; 
+            // التناوب بين الـ 6 فرق
+            state.turn = (state.turn + 1) % teams.length;
+            if(state.qCount >= 30) endGame(); 
+            else {
+                const qSection = document.getElementById('questionSection');
+                qSection.classList.add('hidden');
+                qSection.classList.remove('flex');
+                document.getElementById('wheelSection').style.display = 'flex';
+                document.getElementById('qNum').textContent = state.qCount + 1;
+                updateUI();
+            }
+        }
+
+        function updateUI() {
+            document.getElementById('currentTeamName').textContent = teams[state.turn];
+            const board = document.getElementById('scoreboard'); 
+            board.innerHTML = '';
+            teams.forEach((t, i) => {
+                const div = document.createElement('div');
+                const isCurrent = (i === state.turn);
+                div.className = `flex justify-between items-center px-3.5 py-2 rounded-xl border backdrop-blur-sm transition-all ${
+                    isCurrent 
+                    ? 'bg-yellow-500/25 border-yellow-400 text-yellow-300 font-black shadow-lg scale-[1.02]' 
+                    : 'bg-black/50 border-emerald-900/60 text-slate-100 font-bold hover:bg-black/60'
+                }`;
+                div.innerHTML = `
+                    <span class="tracking-wide text-sm md:text-base">${t}</span>
+                    <span class="font-black text-lg md:text-xl text-yellow-400 drop-shadow">${state.scores[i]}</span>
+                `;
+                board.appendChild(div);
+            });
+        }
+
+        function endGame() {
+            document.getElementById('gameScreen').classList.add('hidden'); 
+            document.getElementById('resultScreen').classList.remove('hidden');
+            const ranking = teams.map((t, i) => ({name: t, s: state.scores[i]})).sort((a,b) => b.s - a.s);
+            const rankDiv = document.getElementById('finalRanking');
+            rankDiv.innerHTML = '';
+            ranking.forEach((r, i) => {
+                rankDiv.innerHTML += `
+                    <div class="flex justify-between items-center p-2.5 rounded-xl bg-emerald-950/60 border border-yellow-500/30">
+                        <span class="font-bold text-white">#${i+1} ${r.name}</span>
+                        <span class="font-black text-lg text-yellow-400">${r.s} نقطة</span>
+                    </div>`;
+            });
+        }
+
+        function playSfx(name) { 
+            if(!isMuted && sfx[name]) { 
+                sfx[name].currentTime = 0; 
+                let p = sfx[name].play(); 
+                if(p) p.catch(()=>{}); 
+            } 
+        }
+
+        function stopSfx(name) {
+            if(sfx[name]) {
+                sfx[name].pause();
+                sfx[name].currentTime = 0;
+            }
+        }
+
+        function toggleMute() { 
+            isMuted = !isMuted; 
+            bgAudio.muted = isMuted;
+
+            Object.values(sfx).forEach(aud => {
+                aud.muted = isMuted;
+            });
+
+            document.getElementById('muteBtn').textContent = isMuted ? '🔇' : '🔊'; 
+            
+            if(!isMuted && bgAudio.paused) {
+                bgAudio.play().catch(()=>{});
+            }
+        }
+    </script>
+</body>
+</html>
